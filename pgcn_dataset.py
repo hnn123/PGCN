@@ -105,7 +105,7 @@ class PGCNVideoRecord:
 
     def get_fg(self, fg_thresh, with_gt=True):
         fg = [p for p in self.proposals if p.best_iou > fg_thresh]
-        if with_gt:
+        if with_gt: #gt也当成前景proposal放进去训练
             fg.extend(self.gt)
 
         for x in fg:
@@ -211,11 +211,11 @@ class PGCNDataSet(data.Dataset):
             video_pool = fg + incomp + bg
             # calculate act iou matrix
             prop_array = np.array([[prop.start_frame, prop.end_frame] for prop in video_pool])
-            iou_array, overlap_array = segment_tiou(prop_array, prop_array)
+            iou_array, overlap_array = segment_tiou(prop_array, prop_array) #计算proposal之间的tIOU
             self.act_iou_dict[video.id] = iou_array
             # calculate act distance matrix
             prop_array = np.array([[prop.start_frame, prop.end_frame] for prop in video_pool])
-            distance_array = segment_distance(prop_array, prop_array)
+            distance_array = segment_distance(prop_array, prop_array) #计算proposal之间的距离
             self.act_dis_dict[video.id] = distance_array
         pbar.close()
 

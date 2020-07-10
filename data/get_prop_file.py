@@ -94,5 +94,5 @@ def get_prop_file(gt_path, prop_dir, propfilepath='prop_file.txt'):
 
 if __name__ == '__main__':
     gt_path = "/media/chen/hzc/code/tad/gtad/data/tianchi_annos/train_annotations_part.csv"
-    prop_dir = "/media/chen/hzc/code/tad/gtad/output_100/default/results"
+    prop_dir = "/media/chen/hzc/code/tad/gtad/output_100_1/default/results"
     get_prop_file(gt_path, prop_dir)

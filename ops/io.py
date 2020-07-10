@@ -11,7 +11,6 @@ def load_proposal_file(filename):
     # print(groups[0])
 
     info_list = [[x.strip() for x in list(g)] for k, g in groups if not k]
-    print(info_list[0])
     def parse_group(info):
         offset = 0
         vid = info[offset]
