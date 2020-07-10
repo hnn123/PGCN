@@ -343,7 +343,7 @@ class PGCNDataSet(data.Dataset):
         return props
 
     def _video_centric_sampling(self, video):
-
+        #fg前景片段  incomp不完整片段 bg背景片段
         fg, incomp, bg = self.prop_dict[video.id][0], self.prop_dict[video.id][1], self.prop_dict[video.id][2]
 
         video_full_pool = fg + incomp + bg

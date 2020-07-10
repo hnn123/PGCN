@@ -8,9 +8,10 @@ def load_proposal_file(filename):
     lines = list(open(filename))
     from itertools import groupby
     groups = groupby(lines, lambda x: x.startswith('#'))
+    # print(groups[0])
 
     info_list = [[x.strip() for x in list(g)] for k, g in groups if not k]
-    
+    print(info_list[0])
     def parse_group(info):
         offset = 0
         vid = info[offset]
@@ -134,3 +135,11 @@ def dump_window_list(video_info, named_proposals, frame_path, name_pattern, allo
         num_window=len(dump_proposals), prs='\n'.join(dump_proposals))
 
     return ret_str
+
+if __name__ == '__main__':
+    path = '/media/chen/hcn/project/PGCN/data/bsn_test_proposal_list.txt'
+    res = load_proposal_file(path)
+    print(res[0][0])
+    print(res[0][1])
+    print(res[0][2])
+    # print(res[0][3])
